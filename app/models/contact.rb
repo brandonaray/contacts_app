@@ -1,6 +1,6 @@
 class Contact < ApplicationRecord
-  def friendly_created_at
-    created_at.strftime("%B %e, %Y")
+  def friendly_updated_at
+    updated_at.strftime("%B %e, %Y")
   end
 
   def full_name
