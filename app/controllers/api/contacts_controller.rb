@@ -1,11 +1,20 @@
 class Api::ContactsController < ApplicationController
   def show
-    @contact = Contact.find_by(id: params[:id])
-    render "show.json.jbuilder"
+    if current_user
+      @contact = Contact.find_by(id: params[:id])
+      render "show.json.jbuilder"
+    else
+      render json: []
+    end
   end
 
   def index
-    @contacts = Contact.all
+    if current_user
+      @contacts = current_user.contacts
+      render "index.json.jbuilder"
+    else
+      render json: []
+    end
 
     if params[:search]
       @contacts = @contacts.where("first_name ILIKE ? OR last_name ILIKE ? OR middle_name ILIKE ? OR email ILIKE ? OR phone_number LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
