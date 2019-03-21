@@ -15,5 +15,13 @@
   <div>
     Bio: <input type="text" name="bio" />
   </div> 
+  <div>
+    Choose user:
+    <select>
+      <% @users.each do |user| %>
+      <option value="<%= user.id %>"><%= user.name %>
+      <% end %>
+    </select>
+  </div>
   <input type="submit" name="" value="Create Contact" />
 </form>

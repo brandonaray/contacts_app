@@ -5,6 +5,7 @@ class ContactsController < ApplicationController
   end
 
   def new
+    @users = User.all
     render "new.html.erb"
   end
 
@@ -15,7 +16,7 @@ class ContactsController < ApplicationController
       phone_number: params[:phone_number],
       email: params[:email],
       bio: params[:bio],
-      user_id: 1
+      user_id: params[:user_id]
       )
     @contact.save
     redirect_to "/contacts/#{@contact.id}"
