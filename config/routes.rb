@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get "/contacts" => "contacts#index"
   get "/contacts/new" => "contacts#new"
   get "/contacts/:id" => "contacts#show"
+  post "/contacts" => "contacts#create"
 
   namespace :api do
     get "/contacts" => "contacts#index"
