@@ -15,8 +15,7 @@ class ContactsController < ApplicationController
       last_name: params[:last_name],
       phone_number: params[:phone_number],
       email: params[:email],
-      bio: params[:bio],
-      user_id: params[:user_id]
+      bio: params[:bio]
       )
     @contact.save
     redirect_to "/contacts/#{@contact.id}"
